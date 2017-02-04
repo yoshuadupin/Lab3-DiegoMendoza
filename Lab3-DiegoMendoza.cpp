@@ -3,7 +3,7 @@
 using namespace std;
 
 int** operar(int**,int,int,int);
-void imprimir(int**,int ); 
+void imprimir(int**,int,int ); 
 
 
 int main(){
@@ -66,7 +66,8 @@ int main(){
 			//Imprimir 
 			for (int i = 0 ; i<vMatriz.size() ; i++){
 				cout<<"----------------------------------------\n";
-				imprimir(vMatriz.at(i),grado);//+1
+				imprimir(vMatriz.at(i),grado,divisor);//+1
+				
 				cout<<"---------------------------------------------\n";
 			}
 		//	for(int i = 0 ; i<grado ; i++){
@@ -91,13 +92,24 @@ int main(){
 	return 0;
 
 }
-void imprimir(int** m ,int grado ){
+void imprimir(int** m ,int grado,int divi ){
 	for(int i = 0 ; i<3 ; i++){
    	for(int j = 0 ; j<grado ; j++){
-			cout<<m[i][j]<<" ";
+			if(j==grado-1){
+				if(i!=1){
+					cout<<m[i][j]<<" |";
+				}else{
+					cout<<m[i][j]<<" |"<<divi;
+				}
+			}else{
+				cout<<m[i][j]<<" ";
+			}
 			
 		}
+		
+		
 		cout<<endl;
+		
 	}
 }
 
