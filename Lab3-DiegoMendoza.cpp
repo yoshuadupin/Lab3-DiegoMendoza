@@ -2,8 +2,8 @@
 #include<vector>
 using namespace std;
 
-void operar(int**,int,int);
-void imprimir(vector<int**>); 
+int** operar(int**,int,int,int);
+void imprimir(int**,int ); 
 
 
 int main(){
@@ -45,25 +45,30 @@ int main(){
 			}
 	
 			for(int i = 0 ; i<grado;i++){
+				cout<<"Ingrese el polinomio x^"<<i<<":";
 				cin>>matriz[0][i];
 			}
 	
 			matriz[2][0]=matriz[0][1];
 			vMatriz.push_back(matriz);
-			for(int i = 0 ; i<3 ; i++){
-				delete[] matriz[i];	
-			}
-			delete matriz;
+		//	for(int i = 0 ; i<3 ; i++){
+		//		delete[] matriz[i];	
+		//	}
+		//	delete matriz;
 			
 			
 			
 			for(int i = 0 ; i<grado;i++){
-				matriz = operar(vMatriz[i],i,divisor);
-				vMatriz.push_back(matriz);
+			 vMatriz.push_back(operar(vMatriz[i],i,divisor,grado));
+				//vMatriz.push_back(matriz);
 			}
-			cout<<"-----------------------------------------------";
+			
 			//Imprimir 
-			imprimir(vMatriz);
+			for (int i = 0 ; i<vMatriz.size() ; i++){
+				cout<<"----------------------------------------\n";
+				imprimir(vMatriz.at(i),grado+1);
+				cout<<"---------------------------------------------\n";
+			}
 		//	for(int i = 0 ; i<grado ; i++){
 		//		matriz3D[i] = new int*[3];
 		//	}
@@ -77,33 +82,30 @@ int main(){
 						
 				
 			
+	}else{
+		cout<<"EJERCICIO 2:\n";
+		
+		
+	}
 	}
 	return 0;
 
 }
-void imprimir(vector<int**> vMatriz){
-	for(int i = 0 ; i<vMatriz.size() ; i++){
-      for(int j = 0 ; j<3 ; j++){
-          for(int k = 0 ; k<grado ; k++){
-             if(k==grado-1){
-                cout<<vMatriz[i][j][k]<<" |"<<endl;
-              }else{
-                cout<<vMatriz[i][j][k]<<"  "<<endl;
-               }
-				if(j==1){
-					cout<<"----------------------------------------------------------";
-				}	
-           }
-      }
-  
-   }
-}	
+void imprimir(int** m ,int grado ){
+	for(int i = 0 ; i<3 ; i++){
+   	for(int j = 0 ; j<grado ; j++){
+			cout<<m[i][j];
+			
+		}
+		cout<<endl;
+	}
+}
 
 
 
 
-int** operar(int** matriz, int colum,int a){
-	if(colum==0){
+int** operar(int** matriz, int colum,int a,int grado){
+	if(colum==grado){
 		matriz[2][colum+1]=matriz[0][colum+1]+matriz[1][colum+1];
 	
 	}else{
