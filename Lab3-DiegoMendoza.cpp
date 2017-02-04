@@ -45,7 +45,7 @@ int main(){
 			}
 	
 			for(int i = 0 ; i<grado;i++){
-				cout<<"Ingrese el polinomio x^"<<i<<":";
+				cout<<"Ingrese el polinomio x^"<<grado-i-1<<":";
 				cin>>matriz[0][i];
 			}
 	
@@ -66,7 +66,7 @@ int main(){
 			//Imprimir 
 			for (int i = 0 ; i<vMatriz.size() ; i++){
 				cout<<"----------------------------------------\n";
-				imprimir(vMatriz.at(i),grado+1);
+				imprimir(vMatriz.at(i),grado);//+1
 				cout<<"---------------------------------------------\n";
 			}
 		//	for(int i = 0 ; i<grado ; i++){
@@ -94,7 +94,7 @@ int main(){
 void imprimir(int** m ,int grado ){
 	for(int i = 0 ; i<3 ; i++){
    	for(int j = 0 ; j<grado ; j++){
-			cout<<m[i][j];
+			cout<<m[i][j]<<" ";
 			
 		}
 		cout<<endl;
